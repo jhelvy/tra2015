@@ -1,0 +1,1109 @@
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 10000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]#
+#
+mean(R_E)
+mean(n_E)
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 10000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 16,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]#
+#
+mean(R_E)
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 10000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]#
+#
+mean(R_E)
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 100000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]#
+#
+mean(R_E)
+alt[,5]
+2%*%alt[,5]
+B
+B%*%alt[,5]
+t(B)%*%alt[,5]
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 10000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]#
+#
+mean(R_E)
+apply(Vj,2,mean)
+apply(expVj,2,mean)
+dim(expVj)
+exp(Vj[1,])
+Vj[1,]
+exp(-0.772)
+exp(0.703)
+exp(-9.7)
+Vj[1,]
+Vj[2,]
+Vj[100,]
+Vj[1000,]
+exp(-14.46)
+exp(-0.77)
+apply(Pj,2,mean)
+quantile(R_E)
+plot(R_E)
+quantile(R_E)
+quantile(R_E, c(0.025, 0.975))
+median(R_E)
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 10000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]#
+#
+# mean, median, and 95% CI of R_E:#
+mean(R_E)#
+median(R_E)#
+quantile(R_E, c(0.025, 0.975))
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 10000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+#
+# mean, median, and 95% CI of R_E:#
+mean(R_E)#
+median(R_E)#
+quantile(R_E, c(0.025, 0.975))
+apply(Pj,2,mean)
+apply(Pj,2,median)
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)
+Vj <- t(B) %*% alt
+Vj
+expVj <- exp(Vj)
+expVj
+sumexpVj)
+sum9expVj)
+sum(expVj)
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums
+Pj
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000
+R_E
+expVj
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt
+Vj
+exp(-9.7)
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+n_E <- Pj[,5]*100#
+n_E#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+n_E <- Pj[,5]*100#
+n_E#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E#
+#
+######### Now let's compute the revenue using simulation, accounting for uncertainty:#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 10000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*100 = the number of people who would choose alternative E#
+#
+n_E <- Pj[,5]*100#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+#
+# mean, median, and 95% CI of R_E:#
+mean(R_E)#
+median(R_E)#
+quantile(R_E, c(0.025, 0.975))
+Pj{,5
+Pj[,5]
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- abs(solve(hessian))#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+Pj[,5]
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -1.273)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-244.75, -307.5, 18.6, 7.7, -307.5, -2275, -318, 49, 18.6, -318, -76.96, 7.28, 7.7, 49, 7.28, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- -1*solve(hessian)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(0,0,0,0, 0,10,2,0, 5,0,2,0, 5,10,0,0, 0,10,0,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums
+Pj[,5]
+Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+n_E
+the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E
+the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*(alt[1,5]+15)*1000#
+R_E
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -1.273)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-244.75, -307.5, 18.6, 7.7, -307.5, -2275, -318, 49, 18.6, -318, -76.96, 7.28, 7.7, 49, 7.28, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- -1*solve(hessian)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(0,0,0,0, 0,10,2,0, 5,0,2,0, 5,10,0,0, 0,10,0,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+Pj[,5]#
+#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+n_E#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*(alt[1,5]+15)*1000#
+R_E#
+#
+######### Now let's compute the revenue using simulation, accounting for uncertainty:#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 100000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*(alt[1,5]+15)*1000#
+#
+# mean, median, and 95% CI of R_E:#
+mean(R_E)#
+median(R_E)#
+quantile(R_E, c(0.025, 0.975))#
+hist(R_E)#
+abline(v=mean(R_E), col="red")#
+abline(v=median(R_E), col="blue")
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -1.273)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- -1*solve(hessian)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(0,0,0,0, 0,10,2,0, 5,0,2,0, 5,10,0,0, 0,10,0,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+Pj[,5]#
+#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+n_E#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E#
+#
+######### Now let's compute the revenue using simulation, accounting for uncertainty:#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 100000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+#
+# mean, median, and 95% CI of R_E:#
+mean(R_E)#
+median(R_E)#
+quantile(R_E, c(0.025, 0.975))#
+hist(R_E)#
+abline(v=mean(R_E), col="red")#
+abline(v=median(R_E), col="blue")
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- -1*solve(hessian)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(0,0,0,0, 0,10,2,0, 5,0,2,0, 5,10,0,0, 0,10,0,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+Pj[,5]#
+#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+n_E#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E#
+#
+######### Now let's compute the revenue using simulation, accounting for uncertainty:#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 100000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+#
+# mean, median, and 95% CI of R_E:#
+mean(R_E)#
+median(R_E)#
+quantile(R_E, c(0.025, 0.975))#
+hist(R_E)#
+abline(v=mean(R_E), col="red")#
+abline(v=median(R_E), col="blue")
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- -1*solve(hessian)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+Pj[,5]#
+#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+n_E#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E#
+#
+######### Now let's compute the revenue using simulation, accounting for uncertainty:#
+#
+# take N multivariate draws of the Beta coefficients:#
+N = 100000#
+draws <- mvrnorm(n=N, B, V)#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the drawn coefficients:#
+Vj <- draws %*% alt#
+expVj <- exp(Vj)#
+sums <- apply(expVj,1,sum) # sum the expVj for each row in expVj#
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+#
+# mean, median, and 95% CI of R_E:#
+mean(R_E)#
+median(R_E)#
+quantile(R_E, c(0.025, 0.975))#
+hist(R_E)#
+abline(v=mean(R_E), col="red")#
+abline(v=median(R_E), col="blue")
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- -1*solve(hessian)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+Pj[,5]#
+#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+n_E#
+#
+# the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E
+load the required library to take draws from a multivariate normal distribution:#
+library(MASS)#
+#
+######### Codify the results from the excel model:#
+#
+# estimated beta coefficients from excel:#
+B = matrix(c(-0.483, 0.08, -0.749, -10.997)) #
+#
+# hessian from excel:#
+hessian = matrix(c(-3184.75, -5750, -1220.4, 188.3,-5750, -12250, -2600, 350,-1220.4, -2600, -597.76, 79.52,188.3, 350, 79.52, -12.04), nrow=4, ncol=4)#
+#
+# invert the hessian to get the var-cov matrix:#
+V <- -1*solve(hessian)#
+#
+# the price, z1, and z2 for alternatives A - E#
+alt = matrix(c(15,25,6,0, 15,35,8,0, 20,25,8,0, 20,35,6,0, 15,35,6,0, 0,0,0,1), nrow=4, ncol=6)#
+#
+######### First, let's directly compute the revenue without simulation, so we will get a point estimate without accounting for uncertainty:#
+#
+# Vj, exp(Vj), and Pj for all j in A through E using the estimated Beta coefficients:#
+Vj <- t(B) %*% alt#
+expVj <- exp(Vj)#
+sums <- sum(expVj) # sum the expVj #
+Pj <- expVj/sums#
+#
+# the 5th column of Pj is the Pj for alternative E#
+Pj[,5]#
+#
+# Pj_E*1 = the number of people who would choose alternative E with a market size of 1#
+n_E <- Pj[,5]*1#
+n_E
+the revenue from alternative E is simply n_E * price_E#
+R_E <- n_E*alt[1,5]*1000#
+R_E
+read.table(file="/Users/jhelvy/Desktop/data.txt")
+read.table(file="/Users/jhelvy/Desktop/data.txt", sep="")
+read.table(file="/Users/jhelvy/Desktop/data.txt", sep=t)
+library(RODBC)
+data <- odbcConnectExcel("./data.xlsx")
+channel <- odbcConnectExcel("./data.xlsx")
+library(RODBC)
+channel <- odbcconnectexcel("./data.xlsx")
+library(gdata)
+read.xls(data.xlsx)
+read.xls(data.xls)
+read.table(file="./data.txt", sep=",")
+day = 367*10^6
+day
+price = 3.6
+price*day
+fee=1
+fee*day
+15*10^12
+debt15*10^12
+debt=15*10^12
+debt/day
+debt/(2*day)
+debt/(3*day)
+13600/365
+15*10^6
+15*10^6*10^3*10^3
+debt
+debt=16.8*10^12
+debt/day
+debt/day/365
+debt/(3.6*day)/365
+green <- rgb(144/256, 202/256, 119/256, 1)#
+blue <- rgb(129/256, 198/256, 221/256, 1)#
+yellow <- rgb(233/256, 182/256, 77/256, 1)#
+orange <- rgb(228/256, 135/256, 67/256, 1)#
+red <- rgb(158/256, 59/256, 51/256, 1)
+green
+head(green)
+plot(green)
+plot(1,1, col=green)
+plot(1,1, col=green, pch=20)
+plot(1,1, col=green, pch=20, cex=5)
+colors <- c(red, orange, yellow, blue, green)
+barplot(seq(1,5), col=colors)
+barplot(seq(1,5), col=rainbow(5))
+green <- rgb(144/256, 202/256, 119/256, 1)#
+blue <- rgb(129/256, 198/256, 221/256, 1)#
+yellow <- rgb(233/256, 182/256, 77/256, 1)#
+orange <- rgb(228/256, 135/256, 67/256, 1)#
+red <- rgb(158/256, 59/256, 51/256, 1)#
+colors <- c(red, orange, yellow, blue, green)#
+barplot(seq(1,5), col=colors)
+plot(x=y)
+plot(seq(1,10), seq(1,10))
+plot(seq(1,10), seq(1,10), xaxs=i)
+plot(seq(1,10), seq(1,10), xaxs="i")
+plot(seq(1,10), seq(1,10), xaxs="i", xlim=0)
+plot(seq(1,10), seq(1,10), xaxs="i", xlim=c(0,20))
+plot(seq(1,10), seq(1,10), xaxs="i", xlim=c(0,20), ylim=c(0,20))
+y=seq(1,10)
+x=y
+y
+x
+plot(y~x)
+plot(y~x, xaxs="i", yaxs="i")
+y=seq(0,10)
+x=y
+plot(y~x, xaxs="i", yaxs="i")
+plot(y~x, xaxs="i", yaxs="i", axes=F)
+plot(y~x, xaxs="i", yaxs="i", axes=F); axis(1, col="grey")
+plot(y~x, xaxs="i", yaxs="i", axes=F); axis(1, col="grey"); axis(2, col="grey", lty="dashed")
+plot(y~x, xaxs="i", yaxs="i", axes=F); axis(1, col="grey"); axis(2, col="grey", lty="dotted")
+plot(y~x, xaxs="i", yaxs="i", axes=F); axis(1, col="grey", lty="dashed"); axis(2, col="grey", lty="dashed")
+x=seq(0,10)#
+y=x#
+plot(y~x, axes=F, xaxs="i", yaxs="i"); axis(1, lty="dashed", col="grey42"); axis(2, lty="dahsed", col="grey42")
+x=seq(0,10)#
+y=x#
+plot(y~x, axes=F, xaxs="i", yaxs="i"); axis(1, lty="dashed", col="grey42"); axis(2, lty="dashed", col="grey42")
+x=seq(0,10)#
+y=x#
+plot(y~x, axes=F, xaxs="i", yaxs="i"); axis(1, lty="dashed", col="grey42"); axis(2, lty="dashed", col="grey42", las=2)
+x=seq(0,10)#
+y=x#
+plot(y~x, axes=F, xaxs="i", yaxs="i"); axis(1, lty="dashed", col="grey42"); axis(2, lty="dashed", col="gray", las=2)
+x=seq(0,10)#
+y=x#
+plot(y~x, axes=F, xaxs="i", yaxs="i"); axis(1, lty="dashed", col="gray"); axis(2, lty="dashed", col="gray", las=2)
+green <- rgb(144/256, 202/256, 119/256, 1)#
+blue <- rgb(129/256, 198/256, 221/256, 1)#
+yellow <- rgb(233/256, 192/256, 77/256, 1)#
+orange <- rgb(228/256, 125/256, 57/256, 1)#
+red <- rgb(153/256, 0/256, 0/256, 1)#
+gray <- "grey70"#
+colors <- c(red, orange, yellow, blue, green, gray)#
+# barplot(seq(1,6), col=colors)
+blue
+library(maps)
+map("state", interior = FALSE)
+map("state", boundary = FALSE, col="gray", add = TRUE)
+map("china","state", interior = FALSE)
+map("china", interior = FALSE)
+map()
+map("china")
+map("prc")
+map("canada")
+map('china')
+map('usa')
+map('world')
+map('world', region="china")
+map('world', region="china", interior = T)
+map('world', region="china")
+map("state", boundary = FALSE, col="gray", add = TRUE)
+map('world', region="china")
+map("world", region="china")
+map("state", boundary = FALSE, col="gray", add = TRUE)
+map("world", region="china", col="gray")
+map("world", region="china", interior=TRUE)
+map("state", region="china", boundary = FALSE, col="gray", add = TRUE)
+map("world", region="china", interior=TRUE)
+map("state", boundary = FALSE, col="gray", add = TRUE)
+map("world", region="china", col="#990000")
+map("world", region="china", bg="#990000")
+map("world", region="china", col="#990000", fill=T)
+map("world", region="usa", col="dodgerblue", fill=T)
+map("usa", col="dodgerblue", fill=T)
+dev.off()
+boxplot(count ~ spray, data = InsectSprays, col = "lightgray")#
+# *add* notches (somewhat funny here):#
+boxplot(count ~ spray, data = InsectSprays,#
+        notch = TRUE, add = TRUE, col = "blue")#
+#
+boxplot(decrease ~ treatment, data = OrchardSprays,#
+        log = "y", col = "bisque")
+matmult(A, B)
+x <- 1:4#
+(z <- x %*% x)    # scalar ("inner") product (1 x 1 matrix)#
+drop(z)             # as scalar#
+#
+y <- diag(x)#
+z <- matrix(1:12, ncol = 3, nrow = 4)#
+y %*% z#
+y %*% x#
+x %*% z
+matmult(x,z)
+matmult(x%*%z)
+x
+y
+z
+dim(x)
+dim(y)
+dim(z)
+crossprod(y,z)
+y%*%z
+library(Matrix)
+example(sparse.model.matrix)
+choice_data <- read.csv("./coded/choice_data_coded.csv", header=T)
+points(x=3.37, y=2143.7)
+L = 60#
+F = 10000#
+E = 2.9*10^7#
+sigma_max = 36000#
+delta_max = 0.25#
+rho = 0.284
+data <- read.csv(file="./data.csv", header = TRUE)
+dfr <- data.frame(#
+  V1 = c(0.1, 0.2, 0.3),#
+  V2 = c(0.2, 0.3, 0.2),#
+  V3 = c(0.3, 0.6, 0.5),#
+  V4 = c(0.5, 0.1, 0.7),#
+  row.names = LETTERS[1:3]#
+)
+dfr
+dfr$category <- row.names(dfr)
+dfr$category
+mdfr <- melt(dfr, id.vars = "category")
+library(reshape)
+mdfr <- melt(dfr, id.vars = "category")
+mdfr
+fr
+dfr
+p <- ggplot(mdfr, aes(category, value, fill = variable)) +#
+    geom_bar(position="fill") +#
+    scale_y_continuous(formatter="percent")
+library(ggplot2)
+p <- ggplot(mdfr, aes(category, value, fill = variable)) +#
+    geom_bar(position="fill") +#
+    scale_y_continuous(formatter="percent")
+p <- ggplot(mdfr, aes(category, value, fill = variable)) +#
+    geom_bar(position="fill")
+p
+library(MASS)#
+library(Hmisc) # errbar function#
+library(data.table)#
+source(file="/Users/jhelvy/Dropbox/R/codes/sourceDir.R")#
+#
+dir <- "/Users/jhelvy/Dropbox/Research/Projects/2012/2012 - CONSUMER PREF STUDY/DATA ANALYSIS/analysis_code/"#
+#
+func.dir <- paste(dir, "functions", sep="")#
+code.dir <- paste(dir, "code", sep="")#
+cars.dir <- paste(dir, "cars.csv", sep="")
+dir <- "/Users/jhelvy/Dropbox/Research/Projects/2012/2012 - CONSUMER PREF STUDY/DATA ANALYSIS/analysis_code/"
+source(file="/Users/jhelvy/Dropbox/R/codes/sourceDir.R")
+library(MASS)#
+library(Hmisc) # errbar function#
+library(data.table)#
+source(file="/Users/jhelvy/Dropbox/R/codes/sourceDir.R")
+assert
+library(ggplot2)#
+library(data.table)#
+source(file="/Users/jhelvy/Dropbox/R/codes/sourceDir.R")#
+sourceDir("/Users/jhelvy/Downloads/Daytum/functions")#
+source(file="/Users/jhelvy/Dropbox/R/codes/multiplot.R")#
+#
+# read in data:#
+data <- as.data.table(read.csv(file="./data/data.csv", header = TRUE))#
+#
+# Fix the date formatting:#
+data$Date <- as.Date(data$Date, format="%m/%d/%Y")#
+#
+# Add month column to data#
+data[,Month:=factor(strftime(data$Date,"%b"))]#
+#
+# Remove Annual expenses, and distribute them evenly:#
+setkey(data,Class)#
+annual <- data["Annual"]#
+annual[,Class:=rep("Spend", nrow(annual))]#
+annual$Amount <- annual$Amount/12#
+data = data[-data["Annual",which=T]]#
+setkey(data,Month)#
+#
+######################################################
+# DO THESE OPERATIONS FOR EACH MONTHLY SUBSET#
+data <- data["Sep"]#
+setkey(data,Class)#
+totalSum <- data[,sum(Amount),by=Class]#
+catSum <- data["Spend",sum(Amount),by=Category]#
+typeSum <- data["Spend",sum(Amount),by=Type]#
+#
+typePlot <- ggplot(data=data["Spend"], aes(x=reorder(Type,Amount,sum), y=Amount)) + labs(x = "Expense Type", y = "Amount ($USD)") + geom_bar(stat="identity", width=0.5, fill="black", colour="white") + coord_flip()#
+catPlot <- ggplot(data=data["Spend"], aes(x=reorder(Category,Amount,sum), y=Amount, fill=reorder(Type,Amount))) + labs(x = "Expense Category", y = "Amount ($USD)") + geom_bar(stat="identity", width=0.5) + coord_flip()
+library(knitr)
+install.packages('knitr', dependencies = TRUE)
+library(ggplot2)#
+library(data.table)#
+library(knitr)#
+(f = system.file("examples", "knitr-minimal.Rnw", package = "knitr"))
+f
+knit(f)  # compile to tex
+knit()
+setwd("/Users/jhelvy/Dropbox/Research/Projects/2012/2012 - CONSUMER PREF STUDY/DATA ANALYSIS/DATA PREP")
+source(file="./1.clean.R")#
+source(file="./2.fix.R")#
+source(file="./3.impute.R")#
+source(file="./4.aer_coding.R")
+head(demo_data)
+names(demo_data)
+uData = demo_data[which(demo_data$USA=1),]
+uData = demo_data[which(demo_data$usa=1),]
+uData = demo_data[which(demo_data$usa==1),]
+head(uData)
+dim(uData)
+names(uData)
+uData = uData[which(uData$mturk == 0),]
+dim(uData)
+uData$enthusiast
+length(uData$enthusiast==1)
+length(which(uData$enthusiast==1))
+length(which(uData$enthusiast==2))
+length(which(uData$enthusiast==3))
+length(which(uData$enthusiast==NA))
+length(is.na(uData$enthusiast))
+49/151
+length(which(uData$enthusiast==1))
+87/nrow(uData)
+uData = uData[which(uData$SUVBuyer==0),]
+dim(uData)
+dim(demo_data)
+data = demo_data[which(demo_data$SUVBuyer == 0]),]
+data = demo_data[which(demo_data$SUVBuyer == 0),]
+dim(data)
+names(demo_data)
+data = demo_data[which(demo_data$SUVbuyer == 0),]
+dim(data)
+data = demo_data[which(demo_data$SUVbuyer==0 & demo_data$usa==1 & demo_data$mturk==0),]
+dim(data)
+length(which(data$enthusiast==1))
+57/101
